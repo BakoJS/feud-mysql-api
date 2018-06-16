@@ -1,0 +1,209 @@
+{
+	"variables": [],
+	"info": {
+		"name": "feud-api",
+		"_postman_id": "856aa0fa-5b0a-99ff-67dc-a909462680a2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Question",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "adding a question for feud-api"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Question",
+			"request": {
+				"url": "localhost:3000/question",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "questionText",
+							"value": "Name something you don't like people doing to your code",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "adding a question for feud-api"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Questions",
+			"request": {
+				"url": "localhost:3000/questions",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add An Answer",
+			"request": {
+				"url": "localhost:3000/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "text",
+							"value": "Backbone",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "userID",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "questionID",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get An Answer",
+			"request": {
+				"url": "localhost:3000/answer/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Answers",
+			"request": {
+				"url": "localhost:3000/answers",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Question",
+			"request": {
+				"url": "localhost:3000/question/65",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Answer",
+			"request": {
+				"url": "localhost:3000/answer/5",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Upvote",
+			"request": {
+				"url": "localhost:3000/vote",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "answerID",
+							"value": "7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "userID",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Downvote",
+			"request": {
+				"url": "localhost:3000/unvote",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userID",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "answerID",
+							"value": "7",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
