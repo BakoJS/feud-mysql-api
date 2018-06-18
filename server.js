@@ -194,3 +194,17 @@ app.post("/unvote", (req, res) => {
   );
 });
 
+app.post("/uservotes", (req, res) => {
+  connection.query(
+    "SELECT * FROM votes WHERE UserID = ?",
+    [req.body.userID],
+    function(err, results, field) {
+      if (err) throw err;
+      var data = results.map(function(x){
+        return x.AnswerID;
+      });
+      res.json(data);
+    }
+  );
+});
+
