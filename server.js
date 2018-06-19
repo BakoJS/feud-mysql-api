@@ -102,12 +102,17 @@ function getQuestionRec (id){
 }
 
 app.post("/question", (req, res) => {
-  connection.query("INSERT INTO questions ( QuestionText, createDate, updateDate ) VALUES ( ?, now(), now() )", 
-  [req.body.questionText], 
-  function(err,results,field){
-    if (err) throw err;
-    getQuestionRec(results.insertId).then(record => res.send(record));
-  });
+  connection.query(
+    "INSERT INTO questions ( QuestionID, QuestionText, createDate, updateDate ) VALUES ( ?, ?, now(), now() ) ON DUPLICATE KEY UPDATE QuestionText = Values(QuestionText), updateDate = Values(updateDate), QuestionID=LAST_INSERT_ID(QuestionID)",
+    [ 
+      req.body.questionID,
+      req.body.questionText
+    ],
+    function(err, results, field) {
+      if (err) throw err;
+      getQuestionRec(results.insertId).then(record => res.send(record));
+    }
+  );
 });
 
 app.get("/questions", (req, res) => {
@@ -152,7 +157,7 @@ app.get("/answer/:id", (req, res) => {
 app.post("/answer", (req, res) => {
   connection.query(
     "INSERT IGNORE INTO answers(AnswerText,FK_QuestionID,AnswerVotes,createDate,updateDate) VALUES(?,?,0,now(),now()) ON DUPLICATE KEY UPDATE AnswerID=LAST_INSERT_ID(AnswerID)",
-    [req.body.text, req.body.questionID],
+    [req.body.answerText, req.body.questionID],
     function(err, results, field) {
       if (err) throw err;
       console.log(results);
