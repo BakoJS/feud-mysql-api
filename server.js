@@ -103,10 +103,11 @@ function getQuestionRec (id){
 
 app.post("/question", (req, res) => {
   connection.query(
-    "INSERT INTO questions ( QuestionID, QuestionText, createDate, updateDate ) VALUES ( ?, ?, now(), now() ) ON DUPLICATE KEY UPDATE QuestionText = Values(QuestionText), updateDate = Values(updateDate), QuestionID=LAST_INSERT_ID(QuestionID)",
+    "INSERT INTO questions ( QuestionID, QuestionText, FK_UserID, createDate, updateDate ) VALUES ( ?, ?, ?, now(), now() ) ON DUPLICATE KEY UPDATE QuestionText = Values(QuestionText), updateDate = Values(updateDate), QuestionID=LAST_INSERT_ID(QuestionID)",
     [ 
       req.body.questionID,
-      req.body.questionText
+      req.body.questionText,
+      req.body.userID
     ],
     function(err, results, field) {
       if (err) throw err;
